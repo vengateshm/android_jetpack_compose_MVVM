@@ -1,4 +1,4 @@
-package com.example.jetpackcomposesample.ui
+package com.example.jetpackcomposesample.presentation.ui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
