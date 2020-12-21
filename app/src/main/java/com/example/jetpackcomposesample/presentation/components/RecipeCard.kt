@@ -9,11 +9,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposesample.R
 import com.example.jetpackcomposesample.domain.model.Recipe
+import com.example.jetpackcomposesample.util.DEFAULT_RECIPE_IMAGE
+import com.example.jetpackcomposesample.util.loadPicture
 
 @Composable
 fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
@@ -25,12 +28,15 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
     ) {
         Column {
             recipe.featuredImage?.let { url ->
-                Image(
-                    bitmap = imageResource(id = R.drawable.empty_plate),
-                    modifier = Modifier.fillMaxWidth()
-                        .preferredHeight(200.dp),
-                    contentScale = ContentScale.Crop
-                )
+                val image = loadPicture(defaultImageRes = DEFAULT_RECIPE_IMAGE, url = url).value
+                image?.let {
+                    Image(
+                        bitmap = it.asImageBitmap(),
+                        modifier = Modifier.fillMaxWidth()
+                            .preferredHeight(200.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
             }
             recipe.title?.let { title ->
                 Row(
