@@ -15,12 +15,12 @@ import com.example.jetpackcomposesample.R
 const val DEFAULT_RECIPE_IMAGE = R.drawable.empty_plate
 
 @Composable
-fun loadPicture(@DrawableRes defaultImageRes: Int, url: String): MutableState<Bitmap?> {
+fun loadPicture(@DrawableRes defaultImage: Int, url: String): MutableState<Bitmap?> {
     val bitmapState : MutableState<Bitmap?> = mutableStateOf(null)
 
     Glide.with(AmbientContext.current)
         .asBitmap()
-        .load(defaultImageRes)
+        .load(defaultImage)
         .into(object : CustomTarget<Bitmap>() {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
              bitmapState.value = resource
