@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.jetpackcomposesample.presentation.animation.PulsingDemo
 import com.example.jetpackcomposesample.presentation.components.CircularIndeterminateProgressBar
 import com.example.jetpackcomposesample.presentation.components.RecipeCard
 import com.example.jetpackcomposesample.presentation.components.SearchAppBar
@@ -46,16 +47,18 @@ class RecipeListFragment : Fragment() {
                         onChangeCategoryScrollPosition = viewModel::onChangeCategoryScrollPosition,
                     )
 
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        LazyColumn {
-                            itemsIndexed(
-                                items = recipes
-                            ) { index, recipe ->
-                                RecipeCard(recipe, onClick = {})
-                            }
-                        }
-                        CircularIndeterminateProgressBar(isDisplayed = loading)
-                    }
+//                    Box(modifier = Modifier.fillMaxSize()) {
+//                        LazyColumn {
+//                            itemsIndexed(
+//                                items = recipes
+//                            ) { index, recipe ->
+//                                RecipeCard(recipe, onClick = {})
+//                            }
+//                        }
+//                        CircularIndeterminateProgressBar(isDisplayed = loading)
+//                    }
+
+                    PulsingDemo()
                 }
             }
         }
